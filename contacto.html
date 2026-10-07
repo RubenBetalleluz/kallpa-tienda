@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto por WhatsApp | Kallpa Sport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera-interior">
+      <a class="marca" href="index.html">
+        <span class="marca-carriles" aria-hidden="true"><i></i><i></i><i></i></span>
+        Kallpa Sport
+      </a>
+      <button class="boton-menu" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="index.html?genero=hombres#catalogo">Hombres</a>
+        <a href="index.html?genero=mujeres#catalogo">Mujeres</a>
+        <a href="index.html?genero=ninos#catalogo">Niños</a>
+        <a href="contacto.html" aria-current="page">Contacto</a>
+      </nav>
+      <a class="enlace-carrito" href="carrito.html">
+        Carrito <span class="contador" data-contador-carrito hidden>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="pagina">
+    <div class="contenedor">
+      <h1>Escríbenos por WhatsApp</h1>
+      <p class="pagina-entrada">Te ayudamos a elegir tu talla, a revisar el estado de tu pedido o a coordinar un cambio. Respondemos el mismo día.</p>
+
+      <div class="dos-columnas">
+        <form class="panel" id="formulario-contacto">
+          <h2>Envía tu consulta</h2>
+          <div class="campos">
+            <div class="campo">
+              <label for="nombre">Tu nombre</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="name" minlength="2" maxlength="80" required>
+            </div>
+            <div class="campo">
+              <label for="motivo">Motivo</label>
+              <select id="motivo" name="motivo" required>
+                <option>Consulta sobre un producto</option>
+                <option>Estado de mi pedido</option>
+                <option>Cambio de talla</option>
+                <option>Formas de pago</option>
+                <option>Ventas por mayor</option>
+              </select>
+            </div>
+            <div class="campo campo-completo">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" minlength="5" maxlength="600" required></textarea>
+            </div>
+          </div>
+          <div class="acciones">
+            <button class="boton boton-whatsapp" type="submit">Enviar por WhatsApp</button>
+          </div>
+          <p class="dato-contacto">Al enviar se abre WhatsApp con tu mensaje listo. Solo tienes que confirmar el envío.</p>
+        </form>
+
+        <aside>
+          <div class="panel">
+            <h2>Chat directo</h2>
+            <a class="boton boton-whatsapp boton-ancho" data-whatsapp="Hola, Kallpa Sport. Quiero hacer una consulta." href="contacto.html">Abrir chat de WhatsApp</a>
+            <p class="dato-contacto"><strong>Horario de atención</strong>Lunes a sábado, de 9:00 a. m. a 7:00 p. m.</p>
+            <p class="dato-contacto"><strong>Zona de reparto</strong>Lima Metropolitana y envíos a provincia por agencia.</p>
+          </div>
+
+          <div class="panel">
+            <h2>Preguntas frecuentes</h2>
+            <p>Elige una y el mensaje se completa solo.</p>
+            <div class="preguntas">
+              <button type="button" data-mensaje="Quiero saber qué talla me corresponde. Mido ___ y peso ___.">¿Qué talla me queda?</button>
+              <button type="button" data-mensaje="Quiero saber el estado de mi pedido. Mi código es KS-______.">¿Dónde está mi pedido?</button>
+              <button type="button" data-mensaje="Quiero cambiar la talla de un producto de mi pedido KS-______.">Quiero cambiar una talla</button>
+              <button type="button" data-mensaje="Quiero una cotización para una compra por mayor de ___ unidades.">Compras por mayor</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie-interior">
+      <p>Kallpa Sport, Lima, Perú</p>
+      <nav aria-label="Pie de página">
+        <a href="index.html#catalogo">Catálogo</a>
+        <a href="carrito.html">Carrito</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/datos-demo.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/contacto.js"></script>
+</body>
+</html>

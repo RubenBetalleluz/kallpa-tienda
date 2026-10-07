@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kallpa Sport | Ropa y accesorios deportivos</title>
+  <meta name="description" content="Tienda de ropa deportiva: ropa, calzado y accesorios para hombres, mujeres y niños. Filtra por color, precio y descuento. Paga con tarjeta, Yape, Plin o contra entrega.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera-interior">
+      <a class="marca" href="index.html">
+        <span class="marca-carriles" aria-hidden="true"><i></i><i></i><i></i></span>
+        Kallpa Sport
+      </a>
+      <button class="boton-menu" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="index.html?genero=hombres#catalogo" data-menu-genero="hombres">Hombres</a>
+        <a href="index.html?genero=mujeres#catalogo" data-menu-genero="mujeres">Mujeres</a>
+        <a href="index.html?genero=ninos#catalogo" data-menu-genero="ninos">Niños</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <a class="enlace-carrito" href="carrito.html">
+        Carrito <span class="contador" data-contador-carrito hidden>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Portada: cada carril lleva al catálogo de un público -->
+    <section class="portada">
+      <div class="contenedor portada-interior">
+        <div class="portada-texto">
+          <h1>Ropa deportiva para entrenar, competir y jugar</h1>
+          <p>Ropa, calzado y accesorios para toda la familia, con descuentos de temporada. Envío gratis en compras desde S/ 199.</p>
+        </div>
+
+        <div class="carriles">
+          <a class="carril carril-hombres" href="index.html?genero=hombres#catalogo" data-carril="hombres">
+            <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M30 14 42 10Q50 20 58 10L70 14 90 30 80 46 72 40V90H28V40L20 46 10 30Z"/></svg>
+            <span class="carril-contenido">
+              <span class="carril-nombre">Hombres</span>
+              <span class="carril-total">Ver productos</span>
+            </span>
+          </a>
+          <a class="carril carril-mujeres" href="index.html?genero=mujeres#catalogo" data-carril="mujeres">
+            <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M30 8H70L76 92H58L50 34 42 92H24Z"/></svg>
+            <span class="carril-contenido">
+              <span class="carril-nombre">Mujeres</span>
+              <span class="carril-total">Ver productos</span>
+            </span>
+          </a>
+          <a class="carril carril-ninos" href="index.html?genero=ninos#catalogo" data-carril="ninos">
+            <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M8 68V54Q8 46 18 46L34 30Q40 26 44 32 52 46 70 52L86 58Q94 62 94 68Z"/><path d="M6 70H94V76Q94 82 88 82H12Q6 82 6 76Z"/></svg>
+            <span class="carril-contenido">
+              <span class="carril-nombre">Niños</span>
+              <span class="carril-total">Ver productos</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo con panel de filtros -->
+    <section class="seccion" id="catalogo" aria-labelledby="titulo-catalogo">
+      <div class="contenedor">
+        <h2 class="seccion-titulo" id="titulo-catalogo">Catálogo</h2>
+
+        <div class="catalogo">
+          <details class="panel-filtros" id="panel-filtros" open>
+            <summary>Filtros</summary>
+
+            <form id="filtros">
+              <div class="campo">
+                <label for="busqueda">Buscar</label>
+                <input type="search" id="busqueda" name="q" placeholder="Polo, zapatillas, mochila…">
+              </div>
+
+              <fieldset class="grupo-filtro">
+                <legend>Sexo</legend>
+                <div id="filtro-generos"></div>
+              </fieldset>
+
+              <fieldset class="grupo-filtro">
+                <legend>Tipo de producto</legend>
+                <div id="filtro-tipos"></div>
+                <div class="campo campo-apretado">
+                  <label for="categoria">Categoría</label>
+                  <select id="categoria" name="categoria"></select>
+                </div>
+              </fieldset>
+
+              <fieldset class="grupo-filtro">
+                <legend>Color</legend>
+                <div class="muestras" id="filtro-colores"></div>
+              </fieldset>
+
+              <fieldset class="grupo-filtro">
+                <legend>Descuento</legend>
+                <label class="opcion">
+                  <input type="checkbox" id="solo-descuento" name="descuento" value="1">
+                  <span>Solo productos con descuento</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="grupo-filtro">
+                <legend>Precio</legend>
+                <div class="rango">
+                  <div class="campo">
+                    <label for="precio-min">Desde</label>
+                    <select id="precio-min" name="precio_min"></select>
+                  </div>
+                  <div class="campo">
+                    <label for="precio-max">Hasta</label>
+                    <select id="precio-max" name="precio_max"></select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="grupo-filtro">
+                <legend>Año de producción</legend>
+                <div class="rango">
+                  <div class="campo">
+                    <label for="anio-min">Desde</label>
+                    <select id="anio-min" name="anio_min"></select>
+                  </div>
+                  <div class="campo">
+                    <label for="anio-max">Hasta</label>
+                    <select id="anio-max" name="anio_max"></select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <button type="button" class="boton boton-secundario boton-ancho" id="quitar-filtros" hidden>Quitar filtros</button>
+            </form>
+          </details>
+
+          <div>
+            <div class="barra-resultados">
+              <p class="resumen-resultados" id="resumen-resultados" aria-live="polite">Cargando productos…</p>
+              <div class="campo campo-linea">
+                <label for="orden">Ordenar por</label>
+                <select class="campo-compacto" id="orden">
+                  <option value="">Más vendidos primero</option>
+                  <option value="precio-menor">Precio: de menor a mayor</option>
+                  <option value="precio-mayor">Precio: de mayor a menor</option>
+                  <option value="descuento">Mayor descuento</option>
+                  <option value="anio">Año: más recientes</option>
+                </select>
+              </div>
+            </div>
+            <div class="rejilla" id="rejilla-productos"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion franja" aria-label="Pagos, envíos y cambios">
+      <div class="contenedor franja-columnas">
+        <div>
+          <h2>Formas de pago</h2>
+          <ul>
+            <li>Tarjeta de crédito o débito</li>
+            <li>Yape y Plin</li>
+            <li>Transferencia bancaria</li>
+            <li>Pago contra entrega en Lima</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Envíos</h2>
+          <p>Gratis en compras desde S/ 199. Para montos menores, el envío cuesta S/ 10.</p>
+        </div>
+        <div>
+          <h2>Cambios de talla</h2>
+          <p>Si la talla no te queda, escríbenos por WhatsApp dentro de los 7 días de recibido el pedido y la cambiamos.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie-interior">
+      <p>Kallpa Sport, Lima, Perú</p>
+      <nav aria-label="Pie de página">
+        <a href="index.html#catalogo">Catálogo</a>
+        <a href="carrito.html">Carrito</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <p class="estado-conexion" id="estado-conexion"></p>
+    </div>
+  </footer>
+
+  <a class="flotante-whatsapp" data-whatsapp="Hola, Kallpa Sport. Quiero hacer una consulta." href="contacto.html">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>
+    <span>Escríbenos por WhatsApp</span>
+  </a>
+
+  <script src="js/config.js"></script>
+  <script src="js/datos-demo.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/tienda.js"></script>
+</body>
+</html>

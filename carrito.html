@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu carrito | Kallpa Sport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera-interior">
+      <a class="marca" href="index.html">
+        <span class="marca-carriles" aria-hidden="true"><i></i><i></i><i></i></span>
+        Kallpa Sport
+      </a>
+      <button class="boton-menu" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="index.html?genero=hombres#catalogo">Hombres</a>
+        <a href="index.html?genero=mujeres#catalogo">Mujeres</a>
+        <a href="index.html?genero=ninos#catalogo">Niños</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <a class="enlace-carrito" href="carrito.html" aria-current="page">
+        Carrito <span class="contador" data-contador-carrito hidden>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="pagina">
+    <div class="contenedor">
+      <h1>Tu carrito</h1>
+
+      <!-- Carrito vacío -->
+      <div class="vacio" id="carrito-vacio" hidden style="margin-top: 2rem;">
+        <h2>Tu carrito está vacío</h2>
+        <p>Elige tus prendas en el catálogo y agrégalas al carrito.</p>
+        <a class="boton boton-primario" href="index.html#catalogo">Ver el catálogo</a>
+      </div>
+
+      <!-- Pedido registrado -->
+      <section class="panel confirmacion" id="confirmacion" tabindex="-1" hidden style="margin-top: 2rem;" aria-labelledby="titulo-confirmacion">
+        <h2 id="titulo-confirmacion">Pedido registrado</h2>
+        <p>Guarda tu código de pedido:</p>
+        <p class="confirmacion-codigo" id="confirmacion-codigo"></p>
+        <dl>
+          <dt>Total</dt><dd id="confirmacion-total"></dd>
+          <dt>Forma de pago</dt><dd id="confirmacion-pago"></dd>
+        </dl>
+        <p>Envíanos el pedido por WhatsApp para coordinar el pago y la entrega.</p>
+        <p class="instrucciones" id="confirmacion-demo" hidden>
+          Modo demostración: el pedido no se guardó porque la página no está conectada a la base de datos.
+        </p>
+        <div class="acciones">
+          <a class="boton boton-whatsapp" id="confirmacion-whatsapp" href="contacto.html" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+          <a class="boton boton-secundario" href="index.html#catalogo">Seguir comprando</a>
+        </div>
+      </section>
+
+      <!-- Carrito con productos -->
+      <div class="dos-columnas" id="carrito-lleno" hidden>
+        <div>
+          <section class="panel" aria-labelledby="titulo-productos">
+            <h2 id="titulo-productos">Productos</h2>
+            <ul class="lista-carrito" id="lista-carrito"></ul>
+          </section>
+
+          <form class="panel" id="formulario-pedido">
+            <h2>Datos de entrega</h2>
+            <div class="campos">
+              <div class="campo campo-completo">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" autocomplete="name" minlength="3" maxlength="120" required>
+              </div>
+              <div class="campo">
+                <label for="email">Correo</label>
+                <input type="email" id="email" name="email" autocomplete="email" maxlength="120" required>
+              </div>
+              <div class="campo">
+                <label for="telefono">Celular</label>
+                <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" inputmode="numeric"
+                       pattern="9[0-9]{8}" maxlength="9" required aria-describedby="ayuda-telefono">
+                <small id="ayuda-telefono">9 dígitos, empieza con 9</small>
+              </div>
+              <div class="campo">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion" autocomplete="street-address" minlength="5" maxlength="200" required>
+              </div>
+              <div class="campo">
+                <label for="distrito">Distrito</label>
+                <input type="text" id="distrito" name="distrito" maxlength="80" required>
+              </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Forma de pago</h2>
+            <div class="metodos" id="metodos-pago" role="radiogroup" aria-label="Forma de pago"></div>
+            <p class="instrucciones" id="pago-instrucciones" aria-live="polite"></p>
+
+            <!-- Solo para pago con tarjeta. No se piden los datos de la tarjeta -->
+            <fieldset class="bloque-pago" id="bloque-tarjeta" hidden>
+              <legend>Tipo de tarjeta</legend>
+              <div class="tipo-tarjeta">
+                <label class="opcion"><input type="radio" name="tipo_tarjeta" value="credito" checked><span>Crédito</span></label>
+                <label class="opcion"><input type="radio" name="tipo_tarjeta" value="debito"><span>Débito</span></label>
+              </div>
+            </fieldset>
+
+            <div class="campos">
+              <div class="campo" id="campo-referencia" hidden>
+                <label for="referencia">Código de operación</label>
+                <input type="text" id="referencia" name="referencia" maxlength="40" inputmode="numeric">
+              </div>
+              <div class="campo campo-completo">
+                <label for="notas">Indicaciones para la entrega (opcional)</label>
+                <input type="text" id="notas" name="notas" maxlength="255">
+              </div>
+            </div>
+
+            <p class="mensaje-error" id="error-pedido" role="alert" tabindex="-1" hidden></p>
+          </form>
+        </div>
+
+        <aside class="panel resumen" aria-labelledby="titulo-resumen">
+          <h2 id="titulo-resumen">Resumen</h2>
+          <dl>
+            <dt>Subtotal</dt><dd id="resumen-subtotal"></dd>
+            <dt class="fila-ahorro">Ahorras</dt><dd class="fila-ahorro" id="resumen-ahorro"></dd>
+            <dt>Envío</dt><dd id="resumen-envio"></dd>
+            <dt class="total">Total</dt><dd class="total" id="resumen-total"></dd>
+          </dl>
+          <p class="nota-envio" id="nota-envio"></p>
+          <button class="boton boton-primario boton-ancho" type="submit" form="formulario-pedido" id="confirmar-pedido">Confirmar pedido</button>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie-interior">
+      <p>Kallpa Sport, Lima, Perú</p>
+      <nav aria-label="Pie de página">
+        <a href="index.html#catalogo">Catálogo</a>
+        <a href="carrito.html">Carrito</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <p class="estado-conexion" id="estado-conexion"></p>
+    </div>
+  </footer>
+
+  <a class="flotante-whatsapp" data-whatsapp="Hola, Kallpa Sport. Tengo una consulta sobre mi pedido." href="contacto.html">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>
+    <span>Escríbenos por WhatsApp</span>
+  </a>
+
+  <script src="js/config.js"></script>
+  <script src="js/datos-demo.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/carrito.js"></script>
+</body>
+</html>
